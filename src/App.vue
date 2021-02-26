@@ -1,33 +1,15 @@
 <template>
-<project-header>To do list</project-header>
-  <div>
-      <to-do-storage :resources="storedResources"></to-do-storage>
-  </div>
+  <project-header>To do list</project-header>
+  <the-resources></the-resources>
 </template>
 
 <script>
-import ToDoStorage from './components/to-do-resources/ToDoStorage.vue'
+
 import ProjectHeader from './components/header/ProjectHeader.vue'
+import TheResources from './components/to-do-resources/TheResources.vue'
 
 export default {
-  components: { ToDoStorage, ProjectHeader },
-  data() {
-    return {
-      storedResources: [
-        { id: 'google', 
-        title: 'Google', 
-        description: 'Learn using google',
-        link: 'https://www.google.com/'
-        },
-        { id: 'Vue', 
-        title: 'Vue', 
-        description: 'Learn vue basics',
-        link: 'https://cli.vuejs.org/'
-        }
-      ]
-    };
-  }
-  
+  components: { ProjectHeader, TheResources },
 }
 </script>
 

@@ -13,7 +13,7 @@ export default {
     components: {
     ToDoResources
   },
-  props: ['resources']
+  inject: ['resources']
   
 }
 </script>

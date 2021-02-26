@@ -4,11 +4,11 @@
         <div>
             <header>
                 <h2>{{ resource.title }}</h2>
-                <button>Delete</button>
+                <base-button>Delete</base-button>
             </header>
         </div>
         <p>{{resource.description}}</p>
-        <a :href="resource.link">Link</a>
+        <a :href="resource.link" v-if="resource.link !== ''">Link</a>
     </li>
 </base-card>
 </template>
