@@ -38,6 +38,10 @@ export default {
         submitData() {
             this.resource.id = new Date().toISOString;
             this.addResource(this.resource);
+            this.resource.id = '';
+            this.resource.title = '';
+            this.resource.description = '';
+            this.resource.link = '';
         }
     }
 }

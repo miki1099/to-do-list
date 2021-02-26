@@ -39,7 +39,12 @@ export default {
             this.selectedComponent = tab;
         },
         addResource(resource) {
-            this.storedResources.push(resource);
+            this.storedResources.push({
+                id: resource.id, 
+                title: resource.title,
+                description: resource.description,
+                link: resource.link
+            });
         }
     },
     provide(){
