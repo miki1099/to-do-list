@@ -45,12 +45,16 @@ export default {
                 description: resource.description,
                 link: resource.link
             });
+        },
+        removeResource(id){
+            this.storedResources.pop(this.storedResources.filter(res => res.id === id));
         }
     },
     provide(){
         return {
             resources: this.storedResources,
-            addResource: this.addResource
+            addResource: this.addResource,
+            removeResource: this.removeResource
         }
     },
     computed: {

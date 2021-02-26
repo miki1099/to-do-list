@@ -1,4 +1,13 @@
 <template>
+<base-error-dialog v-if="inputIsInvalid" title="Invalid Input" @close="confirmError">
+    <template #default>
+        <p>Some of input values are invalid</p>
+        <p>Please make sure you enter few characters in title and description at least</p>
+    </template>
+    <template #actions>
+        <base-button @click="confirmError">Ok</base-button>
+    </template>
+</base-error-dialog>
 <base-card>
     <form @submit.prevent="submitData" >
         <div class="form-block">
@@ -21,8 +30,9 @@
 
 <script>
 import BaseButton from '../UI/BaseButton.vue';
+import BaseErrorDialog from '../UI/BaseErrorDialog.vue';
 export default {
-  components: { BaseButton },
+  components: { BaseButton, BaseErrorDialog },
     inject: ['addResource'],
     data() {
         return {
@@ -32,16 +42,24 @@ export default {
                 description: '',
                 link: ''
             },
+            inputIsInvalid: false,
         };
     },
     methods: {
         submitData() {
             this.resource.id = new Date().toISOString;
+            if (this.resource.title.trim() === '' || this.resource.description.trim() === ''){
+                this.inputIsInvalid = true;
+                return ;
+            }
             this.addResource(this.resource);
             this.resource.id = '';
             this.resource.title = '';
             this.resource.description = '';
             this.resource.link = '';
+        },
+        confirmError() {
+            this.inputIsInvalid = false;
         }
     }
 }
@@ -58,8 +76,7 @@ label {
 input,
 textarea {
   display: block;
-  margin-left: -50%;
-  width: 200%;
+  width: 100%;
   font: inherit;
   padding: 0.15rem;
   border: 1px solid #ccc;

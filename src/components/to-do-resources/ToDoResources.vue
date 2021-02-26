@@ -4,7 +4,7 @@
         <div>
             <header>
                 <h2>{{ resource.title }}</h2>
-                <base-button>Delete</base-button>
+                <base-button @click="removeResource(resource.id)">Delete</base-button>
             </header>
         </div>
         <p>{{resource.description}}</p>
@@ -22,7 +22,8 @@ export default {
             description: String,
             link: String
         }
-    }
+    },
+    inject: ['removeResource'],
 }
 </script>
 

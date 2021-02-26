@@ -1,6 +1,6 @@
 <template>
     <ul >
-    <base-card>
+    <base-card v-if="resources.length !== 0">
         <to-do-resources v-for="res in resources" :key="res.id" :resource="res"></to-do-resources>
     </base-card>
     </ul>
@@ -13,7 +13,7 @@ export default {
     components: {
     ToDoResources
   },
-  inject: ['resources']
+  inject: ['resources'],
   
 }
 </script>
